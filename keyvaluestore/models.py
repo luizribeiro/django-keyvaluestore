@@ -18,8 +18,6 @@ class KeyValueStore(models.Model):
         return '%s: %s' % (self.key, self.value)
 
     def save(self, *args, **kwargs):
-        self.key = self.key.upper()
-
         cache.delete(self.cached_key)
         cache.set(self.cached_key, self.value)
 
