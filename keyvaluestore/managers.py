@@ -4,7 +4,6 @@ from django.utils.translation import ugettext as _
 
 class KeyValueStoreManager(models.Manager):
     def get_value_for_key(self, key):
-        key = key.upper()
         cached_key = 'kvs_%s' % (key,)
         cached = cache.get(cached_key)
 
