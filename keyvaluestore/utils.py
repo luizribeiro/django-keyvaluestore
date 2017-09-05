@@ -13,8 +13,5 @@ def get_value_or_default(key, default):
 
 
 def set_key_value(key, value):
-    obj, created = KeyValueStore.objects.get_or_create(key=key, defaults={'value': value})
-    if not created:
-        obj.value = value
-        obj.save()
+    KeyValueStore.objects.update_or_create(key=key, defaults={'value': value})
     return True
